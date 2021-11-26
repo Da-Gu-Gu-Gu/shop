@@ -1,12 +1,13 @@
 import React from 'react' 
-import Navbar from '../Components/Navbar'
+import Slider from '../Components/Slider'
+import Product from './Product'
 
 const Home=()=>{
     return (
-        <div>
-            hddd
-        </div>
-
+        <>
+        <Slider />
+        <Product/>
+        </>
     )
 }
 

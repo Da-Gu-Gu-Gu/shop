@@ -31,7 +31,7 @@ const Navbar=()=>{
            
             <Typography variant="h6" component="div" style={{textAlign:'center'}} sx={{ flexGrow: 1 ,color:'white'}}>
             <Link to="/" style={{textDecoration:'none',color:'white'}}>
-              Tidagu
+              Dagugugu
               </Link>
             </Typography>
            
