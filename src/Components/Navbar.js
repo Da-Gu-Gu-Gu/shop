@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+
 import IconButton from '@mui/material/IconButton';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -11,10 +11,11 @@ import {Container,Badge,} from '@mui/material'
 import {Link} from 'react-router-dom' 
 
 const Navbar=()=>{
+  const user=false;
     return(
-        <Box sx={{ flexGrow: 1 }} >
+     
            
-        <AppBar position="static" style={{backgroundColor:'#202124'}}>
+        <AppBar   style={{backgroundColor:'#202124',marginBottom:'100px'}}>
         <Container>
           <Toolbar>
               <Link to="/" >
@@ -40,12 +41,15 @@ const Navbar=()=>{
             <ShoppingCartIcon />
 </Badge>
 </Link>
-<Link to="/login" style={{textDecoration:'none',color:'white'}}>Login</Link>
+{user?(<Link to="/login" style={{textDecoration:'none',color:'white'}}>Login</Link>):
+(<Link to="/signup" style={{textDecoration:'none',color:'white'}}>Signup</Link>)
+    }
+
           </Toolbar>
           </Container>
         </AppBar>
         
-      </Box>
+     
     )
 }
 

@@ -3,9 +3,79 @@
 
 *{
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+
 }
-.img-carousel{
-  border-radius: 15px;
-  background-position: center;
-  background-size: 'cover';
+
+
+.input{
+  width: 250px !important;
+  outline: none;
+  border:0.1px solid black;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.login{
+  background-color: #202124 !important ;
+  color:white !important;
+}
+
+.forgotpassword{
+  color:grey !important;
+  text-align: right !important;
+  font-size: 0.8rem;
+}
+
+
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+  background: grey;
+  margin-bottom: 30px;
+}
+
+/* media-quaries */
+
+@media(max-width:767px){
+  .slider{
+    height: 50vh  !important;
+  
+  }
+.mobile{
+  display: none;
+}
+}
+
+@media(min-width:768px){
+  .input{
+    width:100% !important;
+  }
+}
+
+@media(max-width:1024px){
+  .title{
+    font-size: 2rem !important;
+    }
+    .des{
+      font-size: 1rem !important;
+    }
+  .slider{
+    height: 60vh !important;
+  }
 }
