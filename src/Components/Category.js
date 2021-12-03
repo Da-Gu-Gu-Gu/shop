@@ -13,18 +13,11 @@ const Wrapper=styled.div`
   
 `
 const Image=styled.img`
-position:
-&:hover {
-    opacity:0.5;
-    cursor:pointer;
-    .title{
-        display:block !important;
-    },
-    
-  }
+  width:100%;
+  height:100%;
 `
 const Title=styled.span`
-
+  
     color:black;
     font-size:1.1rem;
     font-weight:bold;
@@ -70,24 +63,24 @@ const Category = () => {
     return (
         <Wrapper>
             <Container style={{paddingTop:'44px',paddingBottom:'44px'}} >
-            <Typography variant="h5" component="div" style={{textAlign:'left',marginBottom:'30px'}} >
-      
-              Category
- 
-            </Typography>
+              <h1 style={{textAlign:'left',marginBottom:'30px'}} >
+        
+                Category
+  
+              </h1>
             <Grid container  spacing={0} >
                 {itemData.map((item)=>(
               <Grid item xs={4} key={item.id} style={{height:'300px',position:'relative'}}>
-                  <Image src={item.img} height="300px" width="100%" alt={item.title}/>
-                  <Title className="title">{item.title}</Title>
+                  <Image className="aa" src={item.img} height="300px" width="100%" alt={item.title}/>
+                  <Title className="Ctitle">{item.title}</Title>
                   </Grid>
                 ))}
             </Grid>
             <Grid container  spacing={0}>
                 {itemData2.map((item)=>(
-              <Grid   className="aa" item key={item.id} xs={6} style={{height:'250px',position:'relative'}}>
-                  <Image src={item.img} height="250px" width="100%" alt={item.title}/>
-                  <Title className="title">{item.title}</Title>
+              <Grid    item key={item.id} xs={6} style={{height:'250px',position:'relative'}}>
+                  <Image className="aa" src={item.img} height="250px" width="100%" alt={item.title}/>
+                  <Title className="Ctitle">{item.title}</Title>
                   </Grid>
                 ))}
                   

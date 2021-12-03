@@ -70,6 +70,7 @@ const ProductList = () => {
         {itemData.map((item) => (
           <Box key={item.img}>
             <img
+            width="100%"
               src={`${item.img}?w=248&fit=crop&auto=format`}
               srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}

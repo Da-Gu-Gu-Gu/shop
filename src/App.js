@@ -10,7 +10,9 @@ import Home from './Screens/Home'
 import Navbar from './Components/Navbar'
 import Login from './Screens/Login'
 import Signup from './Screens/Signup'
-
+import ForgotPassword from './Components/ForgotPassword'
+import ResetPassword  from './Components/ResetPassword';
+import Cart from './Screens/Cart'
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
           <Route  path="/" element={<Home/>} />
           <Route  path="/login" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>} />
-          <Route  path="/cart" element={<h1>Cart</h1>} />
+          <Route path="/forgotpassword" element={<ForgotPassword/>} />
+          <Route path="/resetpassword/:id/:token" element={<ResetPassword/>} />
+          <Route  path="/cart" element={<Cart/>} />
         </Routes>
     </Router>
   );

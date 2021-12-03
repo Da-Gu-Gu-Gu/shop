@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Button from '@mui/material/Button'
 import { Container } from '@mui/material'
 import {Link} from 'react-router-dom'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import SendIcon from '@mui/icons-material/Send';
 
 const Title=styled.h1`
 border-left:5px solid #9c27b0;
@@ -50,36 +50,30 @@ const Wrapper=styled.div`
 `
 
 
-const SignupForm = () => {
+const ForgotPassword = () => {
 
    
 
     const [email,setEmail]=useState('')
-    const [password,setPassword]=useState('')
-    const [image,setImage] =useState(null)
-    
-    const handleChange=(e)=>{
 
-    }
+
+    
 
     return (
       <Wrapper>
         <Container>
           <Wrap>
         <Title >
-            Signup Here
+            Please Fill Your Email Here
         </Title>
         
         <Form>
 
-        <input type="text" className="input" placeholder="Enter Name" />
            <input type="email" className="input" placeholder="Enter Email" />
-            <input type="password" className="input" placeholder="Enter Password" />
-          <input type="password" className="input" placeholder="Confirm Password" />
-            <Button color="text" sx={{my:2}} variant="filled" className="login" fullWidth endIcon={<ArrowForwardIcon/>} >
-                Sign up
+           
+            <Button color="text" sx={{my:2}} variant="filled" className="login" fullWidth endIcon={<SendIcon/>} >
+                Send
             </Button>
-            <span style={{color:'black'}}>If you have already account ?, <Link to="/login" style={{color:'#9c27b0'}} >Login</Link> here</span>
         </Form>
         </Wrap>
         </Container>
@@ -88,4 +82,4 @@ const SignupForm = () => {
     )
 }
 
-export default SignupForm
+export default ForgotPassword
