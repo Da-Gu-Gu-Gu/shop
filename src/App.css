@@ -7,6 +7,15 @@
 
 }
 
+.cartContent{
+  width:200px;
+  display: flex;
+  
+  justify-content: space-between;
+  align-items: center;
+
+  /* style={{justifyContent:'space-between',display:'flex',alignItems:'center'}} */
+}
 
 .input{
   width: 250px !important;
