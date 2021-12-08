@@ -1,5 +1,9 @@
 import { Add, Remove } from "@mui/icons-material";
 import styled from "styled-components";
+import React,{useState} from "react";
+import { useLocation } from 'react-router-dom'
+import { addProduct } from "../Components/redux/cartRedux";
+import {useDispatch} from 'react-redux'
 
 
 const Container = styled.div`
@@ -113,7 +117,28 @@ const Button = styled.button`
   }
 `;
 
-const SingleProduct = () => {
+const SingleProduct = (props) => {
+  const location = useLocation()
+  const { data } = location.state
+
+  let [quantity,setQuantity]=useState(1)
+  let [size,setSize]=useState('')
+
+  const add=()=>{
+    setQuantity(quantity+1)
+  }
+  const reduce=()=>{
+
+    quantity<=1?setQuantity(1):setQuantity(quantity-1)
+    
+  }
+
+  const dispatch=useDispatch()
+const handleClick=()=>{
+
+  dispatch(addProduct({...data,quantity,price:data.price}))
+}
+
   return (
     <Container>
  
@@ -122,25 +147,21 @@ const SingleProduct = () => {
           <Image className="pimage" src="https://i.ibb.co/S6qMxwr/jean.jpg" />
         </ImgContainer>
         <InfoContainer className="pinfo">
-          <Title>Denim Jumpsuit</Title>
+          <Title>{data.title.toUpperCase()}</Title>
           <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
+          {data.des}
           </Desc>
-          <Price>$ 20</Price>
+          <Price>$ {data.price}</Price>
           <FilterContainer className="pfilter">
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+             
+              <FilterColor color={data.color} />
+             
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
+              <FilterSize onChange={(e)=>setSize(e.target.value)}>
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
                 <FilterSizeOption>M</FilterSizeOption>
@@ -151,11 +172,11 @@ const SingleProduct = () => {
           </FilterContainer>
           <AddContainer className="paddtocart">
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={()=>reduce()} />
+              <Amount>{quantity}</Amount>
+              <Add  onClick={()=>add()} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={()=>handleClick()}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

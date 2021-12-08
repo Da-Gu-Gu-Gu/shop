@@ -14,17 +14,17 @@ const CartList = (props) => {
     return (
         <Container>
             <List
-          dataSource={props.data}
+          dataSource={props.data.products}
           renderItem={item => (
-            <List.Item key={item.title}>
+            <List.Item key={item._id}>
               <List.Item.Meta
                 avatar={<Avatar src={item.img.large} />}
                 title={<a href="https://ant.design">{item.title}</a>}
                 description={`size: ${item.size}`}
               />
               <div className="cartContent">
-              <InputNumber min={1}  defaultValue={1} style={{width:'55px',outline:'none',marginRight:'5px'}} onChange={onChange} />
-              <div style={{fontWeight:'bold'}}>$ 12</div>
+              <InputNumber min={1}  defaultValue={item.quantity} style={{width:'55px',outline:'none',marginRight:'5px'}} onChange={onChange} />
+              <div style={{fontWeight:'bold'}}>$ {item.price}</div>
               <IconButton aria-label="delete" color='error'>
   <DeleteOutlineIcon />
 </IconButton>
@@ -34,7 +34,7 @@ const CartList = (props) => {
         />
         <hr/>
         <div style={{float:'right'}}>
-          <h1>Total = $ 100</h1>
+          <h1>Total = $ {props.data.total}</h1>
           <Button
            style={{backgroundColor:'black',color:'white',float:'right'}}
             variant="filled" 

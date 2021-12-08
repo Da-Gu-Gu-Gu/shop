@@ -1,5 +1,6 @@
 import React from 'react'
 import CartList from '../Components/CartList'
+import {useSelector} from 'react-redux'
 
 const itemData = [
     {
@@ -32,6 +33,10 @@ const itemData = [
   ];
 
 const Cart = () => {
+
+  const cart=useSelector(state=>state.cart)
+
+
     return (
         <div>
             <h1 style={{textAlign:'left',marginBottom:'30px'}} >
@@ -39,7 +44,7 @@ const Cart = () => {
       Your Products
 
       </h1>
-      <CartList data={itemData} />
+      <CartList data={cart} />
         </div>
     )
 }

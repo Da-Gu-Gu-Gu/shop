@@ -1,6 +1,8 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Container,Box } from '@mui/material'
 import Masonry from 'react-masonry-css'
+import {publicRequest} from '../utils/requestMethods'
+import {Link} from 'react-router-dom'
 
 const itemData = [
   {
@@ -60,6 +62,22 @@ const breakpointColumnsObj = {
   500: 1
 };
 const ProductList = () => {
+  const [product,setProduct]=useState([])
+
+  useEffect(()=>{
+    const getProduct=async ()=>{
+      try{
+          publicRequest.get('/product/getall')
+          .then((res)=>{
+            setProduct(res.data)
+           console.log(res.data)
+          })
+      }
+      catch{}
+    }
+    getProduct()
+  },[])
+console.log(product)
   return (
     <Container sx={{ mt: 5 }}>
       <Container>
@@ -67,16 +85,18 @@ const ProductList = () => {
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column">
-        {itemData.map((item) => (
-          <Box key={item.img}>
+        {product.map((item) => (
+          <Link to={`product/${item._id}`}    state={{ data: item}} key={item._id} params={item}>
+          <Box >
             <img
             width="100%"
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`https://images.unsplash.com/photo-1549388604-817d15aa0110?w=248&fit=crop&auto=format`}
+              srcSet={`https://images.unsplash.com/photo-1549388604-817d15aa0110?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
             />
           </Box>
+          </Link>
         ))}
       </Masonry>
     </Container>

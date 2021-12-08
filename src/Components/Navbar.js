@@ -8,9 +8,12 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {Container,Badge,} from '@mui/material'
 import {Link} from 'react-router-dom' 
+import {useSelector} from 'react-redux'
 
 const Navbar=()=>{
   const user=false;
+  const cart=useSelector(state=>state.cart.quantity)
+  console.log(cart)
     return(
      
            
@@ -36,7 +39,7 @@ const Navbar=()=>{
             </Typography>
            
             <Link to="/cart" style={{textDecoration:'none',color:'white'}}>
-            <Badge color="secondary" variant="dot" sx={{mr:2}}>
+          <Badge color="secondary" badgeContent={cart}   sx={{mr:2}}  >
             <ShoppingCartIcon />
 </Badge>
 </Link>
