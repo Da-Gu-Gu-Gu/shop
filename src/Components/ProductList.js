@@ -70,16 +70,16 @@ const ProductList = () => {
           publicRequest.get('/product/getall')
           .then((res)=>{
             setProduct(res.data)
-           console.log(res.data)
+           
           })
       }
       catch{}
     }
     getProduct()
   },[])
-console.log(product)
+
   return (
-    <Container sx={{ mt: 5 }}>
+    <Container sx={{ mt: 5,mb:4 }}>
       <Container>
       <Masonry
         breakpointCols={breakpointColumnsObj}

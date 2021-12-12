@@ -4,6 +4,8 @@ import React,{useState} from "react";
 import { useLocation } from 'react-router-dom'
 import { addProduct } from "../Components/redux/cartRedux";
 import {useDispatch} from 'react-redux'
+import { v4 as uuid_v4 } from "uuid";
+
 
 
 const Container = styled.div`
@@ -135,8 +137,9 @@ const SingleProduct = (props) => {
 
   const dispatch=useDispatch()
 const handleClick=()=>{
-
-  dispatch(addProduct({...data,quantity,price:data.price}))
+  // let key=data._id
+  let key=uuid_v4()
+  dispatch(addProduct({'data':[data,quantity,key],price:data.price,key}))
 }
 
   return (
