@@ -1,4 +1,4 @@
-import { AcUnitTwoTone } from '@mui/icons-material';
+
 import {createSlice} from '@reduxjs/toolkit'
 
 const cartSlice=createSlice({
@@ -21,10 +21,10 @@ const cartSlice=createSlice({
             state.quantity-=1
        
          state.products=state.products.filter(x=>{
-             if(x[2]==action.payload.id){
+             if(x[2]===action.payload.id){
                  state.total-=x[1]*x[0]['price']
              }
-              return x[2]!=action.payload.id
+              return x[2]!==action.payload.id
          })
         }
     }

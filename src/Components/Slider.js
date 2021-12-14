@@ -112,76 +112,6 @@ const Des = styled.p`
   letter-spacing: 3px;
 `;
 
-// const Container=styled.div`
-//     width:100%;
-//     height:100vh;
-//     background-color:black;
-//     display:flex;
-//     position:relative;
-
-    
-// `
-
-
-
-// const Arrow=styled.div`
-//   width:50px;
-//   height:50px;
-//   background:white;
-//   border-radius:50%;
-//   display:flex;
-//   align-items:center;
-//   justify-content:center;
-//   position:absolute;
-//   top:0;
-//   left:${props=>props.direction ==="left" && "10px"};
-//   right:${props=>props.direction ==="right" && "10px"};
-//   bottom:0;
-//   margin:auto;
-//   opacity:0.5;
-//   cursor:pointer;
-//   z-index:2;
-// `
-// const Wrapper=styled.div`
-// width:100%;
-// height:100%;
-// border:1px solid blue;
-
-// `
-// const Slide=styled.div`
-// display:flex;
-// flex-direction:row;
-// heigth:100vh;
-// width:100%;
-// align-items:center;
-// justify-content:space-around;
-// `
-
-
-// const ImgContainer=styled.div`
-// height:100%;
-// border:1px soid green;
-// width:50%;
-// `
-// const Image=styled.img`
-//     height:80%'
-// `
-// const InfoContianer=styled.div`
-//   width:50%;
-//   border:1px solid red;
-//     align-items:center;
-// `
-// const Title=styled.h1`
-//   font-size:2rem;
-//   color:white !important;
-// `
-
-// const Des=styled.p`
-//   font-size:2rem;
-//   color:white !important;
-  
-// `
-
 
 
 const Slider = () => {
@@ -228,24 +158,3 @@ const Slider = () => {
 
 export default Slider
 
-{/* <Carousel autoplay>
-        {itemData.map((item,index) => (
-    
-        <div key={index}   className="gwaysi" style={{justifyContent:'space-evenly',display:'flex',height:'75vh',alignItems:'center',borderRadius:'15px',backgroundColor:'pink'}}>
-                  <First style={{width:'45%',alignSelf:'center'}}>
-                    <center>
-                         <img width="30%" height="30%"
-                      src={item.img}  alt={item.title}
-                      />
-                      </center>
-                  </First>
-                  <Second style={{textAlign:'left',width:'50%'}}>
-                      <h1 className="banner-h1">{item.title}</h1>
-                      <h3 className="banner-h3">{item.price}</h3>
-                      <Button className="banner-button" variant="outlined" sx={{color:"#123"}} startIcon={<ShoppingCartIcon/>}>
-                          Shop Now
-                      </Button>
-                  </Second>
-                  </div>
-
-        ))} */}

@@ -1,25 +1,30 @@
 import React from 'react'
 import {Container, Button,IconButton} from '@mui/material'
 import {List,Avatar} from 'antd'
-import { InputNumber } from 'antd';
+
 import CheckIcon from '@mui/icons-material/Check';
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux'
 import { removeProduct } from './redux/cartRedux';
-
+import {useNavigate} from 'react-router-dom'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const CartList = (props) => {
 
   const dispatch=useDispatch()
   let quantity=useSelector(state=>state.cart)
-    console.log(quantity)
- 
+  let user=useSelector(state=>state.user.user)
+ const navigate=useNavigate()
 
+  const confirm=()=>{
+  
+    console.log(user)  
+    if(!user){
+       navigate('/login')
+    }
+  }
 
   const remove=(aa)=>{
-    console.log(aa)
-  //  let result= quantity.products.filter(x=>x[2]!=aa)
     dispatch(removeProduct({'id':aa}))
   } 
     return (
@@ -27,7 +32,7 @@ const CartList = (props) => {
             <List 
           dataSource={props.data}
           renderItem={(item,x) => (
-            // console.log(quantity.products[item[2]])
+      
             <List.Item key={x}>
               <List.Item.Meta
                 avatar={<Avatar src={item[0].img}  />}
@@ -36,7 +41,7 @@ const CartList = (props) => {
               />
               <div className="cartContent">
               <div style={{fontWeight:'bold'}}>{item[1]}</div>
-              {/* <InputNumber min={1} defaultValue={item[1]} style={{width:'55px',outline:'none',marginRight:'5px'}} onChange={(e)=>changeQuantity(e.target.value)} /> */}
+ 
               <div style={{fontWeight:'bold'}}>$ {item[0].price * item[1]}</div>
               <IconButton aria-label="delete" color='error' onClick={()=>remove(item[2])}>
   <DeleteOutlineIcon />
@@ -52,7 +57,7 @@ const CartList = (props) => {
            style={{backgroundColor:'black',color:'white',float:'right'}}
             variant="filled" 
             endIcon={<CheckIcon/>}
-            
+            onClick={()=>confirm()}
           >
             Confirm
           </Button>
