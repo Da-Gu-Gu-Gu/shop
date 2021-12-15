@@ -69,7 +69,7 @@ const LoginForm = () => {
    let password=createRef()
  
         const loginUser=async ()=>{
-          
+          if(email.current.value && password.current.value ) {
           try{
             publicRequest.post('/user/login',{
             'email':email.current.value,
@@ -89,7 +89,7 @@ const LoginForm = () => {
             .then((res)=>{
               setShow(false)
               dispatch(getUser({user:res.data}))
-              navigate('/')
+              res.data.adminLr?navigate('/dashboard'):navigate('/')
             })
             .catch(err=>{
               console.log(err)
@@ -99,6 +99,11 @@ const LoginForm = () => {
       catch(err){
         console.log(err)
       }
+    }
+    else{
+      setShow(true)
+      setError("Please fill all data")
+    }
     }
   
 

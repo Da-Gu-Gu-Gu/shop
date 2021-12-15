@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Container, Button,IconButton} from '@mui/material'
 import {List,Avatar} from 'antd'
 
@@ -8,13 +8,24 @@ import {useDispatch} from 'react-redux'
 import { removeProduct } from './redux/cartRedux';
 import {useNavigate} from 'react-router-dom'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import StripeCheckout from 'react-stripe-checkout'
+
+
+const Key=process.env.REACT_APP_STRIPE
 
 const CartList = (props) => {
+
+  const [stripeToken,setStripeToken]=useState(null)
 
   const dispatch=useDispatch()
   let quantity=useSelector(state=>state.cart)
   let user=useSelector(state=>state.user.user)
  const navigate=useNavigate()
+
+ const onToken=(token)=>{
+   setStripeToken(token)
+ }
+ console.log(stripeToken)
 
   const confirm=()=>{
   
@@ -53,6 +64,16 @@ const CartList = (props) => {
         <hr/>
         <div style={{float:'right'}}>
           <h1>Total = $ {quantity.total}</h1>
+          <StripeCheckout
+          name="Dagugugu Shop"
+          image=""
+          billingAddress
+          shippingAddress
+          description={`Your total is ${quantity.total}`}
+          amount={quantity.total*100}
+          token={onToken}
+          stripeKey={Key}
+          >
           <Button
            style={{backgroundColor:'black',color:'white',float:'right'}}
             variant="filled" 
@@ -61,6 +82,7 @@ const CartList = (props) => {
           >
             Confirm
           </Button>
+          </StripeCheckout>
         </div>
         </Container>
     )
