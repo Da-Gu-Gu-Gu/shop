@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Container, Button,IconButton} from '@mui/material'
 import {List,Avatar} from 'antd'
 
@@ -9,6 +9,7 @@ import { removeProduct } from './redux/cartRedux';
 import {useNavigate} from 'react-router-dom'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import StripeCheckout from 'react-stripe-checkout'
+import { publicRequest } from '../utils/requestMethods';
 
 
 const Key=process.env.REACT_APP_STRIPE
@@ -27,12 +28,21 @@ const CartList = (props) => {
  }
  console.log(stripeToken)
 
+ useEffect(()=>{
+    const makeRequest=async ()=>{
+      try{
+          const res=await publicRequest.post()
+      }
+      catch{}
+    }
+ }
+ )
   const confirm=()=>{
   
     console.log(user)  
-    if(!user){
-       navigate('/login')
-    }
+    // if(!user){
+    //    navigate('/login')
+    // }
   }
 
   const remove=(aa)=>{

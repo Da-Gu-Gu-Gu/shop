@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
+import React,{useState,createRef} from 'react'
 import styled from 'styled-components'
 import Button from '@mui/material/Button'
-import { Container } from '@mui/material'
+import { Container,IconButton } from '@mui/material'
 import {Link} from 'react-router-dom'
+import { publicRequest } from '../utils/requestMethods'
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+import CloseIcon from '@mui/icons-material/Close';
+import { useParams } from 'react-router-dom';
 
 
 const Title=styled.h1`
@@ -53,25 +58,73 @@ const Wrapper=styled.div`
 const ResetPassword = () => {
 
    
+const {id,token}=useParams()
+const password=createRef()
+const cpassword=createRef()
+const [show,setShow]=useState(false)
+const [error,setError]=useState('')
+const [info,setInfo]=useState(false)
 
-   const [password,setPassword]=useState()
-
-
+const submit=()=>{
+  if(password.current.value && cpassword.current.value){
+ 
+  try{
+      publicRequest.put(`/user/resetpassword/${id}/${token}`,{
+        'password':password.current.value,
+        'confirmPassword':cpassword.current.value
+      })
+      .then(res=>{
+        setShow(true)
+              if(res.data.msg ){
+                setInfo(true)
+                console.log(res.data.msg)
+                setError(res.data.msg)
+              }
+              else{setError(res.data)}
+            
+      })
+  }
+  catch{}
+}
+else{
+  setShow(true)
+  setError("Please fill all data")
+}
+}
     
 
     return (
       <Wrapper>
         <Container>
           <Wrap>
+          { show && (<Stack sx={{ width: '100%' }}  my={3} spacing={2}>
+     
+     <Alert  
+         action={
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={() => {
+              setShow(false)
+            }}
+          >
+            <CloseIcon fontSize="inherit" />
+          </IconButton>
+        }
+        severity="error" color={info?'info':'error'} >{error}</Alert>
+   </Stack>
+
+         )}
         <Title >
             Reset Password
         </Title>
         
         <Form>
 
-           <input type="password" className="input" placeholder="Enter New Password" />
-           <input type="password" className="input" placeholder="Confirm New Password" />
-            <Button color="text" sx={{my:2}} variant="filled" className="login" fullWidth  >
+           <input type="password" className="input" ref={password}  placeholder="Enter New Password" />
+           <input type="password" className="input" ref={cpassword} placeholder="Confirm New Password" />
+            <Button color="text" sx={{my:2}} variant="filled" onClick={submit} className="login" fullWidth  >
                 Confirm
             </Button>
         </Form>
