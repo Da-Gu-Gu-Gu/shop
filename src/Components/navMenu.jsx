@@ -17,7 +17,12 @@ function NavMenu() {
          navigate("/")
     }
     return (
-        <Menu style={{zIndex:'3',marginTop:'18px',padding:'5px'}}>
+        <Menu style={{zIndex:'3',marginTop:'18px',padding:'10px'}}>
+           <Menu.Item>
+          <Link to="/orderlist" style={{color:'black'}}>
+           Orders
+          </Link>
+        </Menu.Item>
         <Menu.Item>
           <Link to="/profile" style={{color:'black'}}>
            Profile

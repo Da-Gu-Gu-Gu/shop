@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+
 import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import {Link} from 'react-router-dom'
+
 
 const Wrapper=styled.div`
     width:100%;

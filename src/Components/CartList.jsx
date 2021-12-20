@@ -6,7 +6,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux'
 import { removeProduct } from './redux/cartRedux';
-import {useNavigate} from 'react-router-dom'
+
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import StripeCheckout from 'react-stripe-checkout'
 import { publicRequest } from '../utils/requestMethods';
@@ -21,7 +21,7 @@ const CartList = (props) => {
   const dispatch=useDispatch()
   let quantity=useSelector(state=>state.cart)
   let user=useSelector(state=>state.user.user)
- const navigate=useNavigate()
+
 
  const onToken=(token)=>{
    setStripeToken(token)

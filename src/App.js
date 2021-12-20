@@ -15,6 +15,9 @@ import ResetPassword  from './Components/ResetPassword';
 import Cart from './Screens/Cart'
 import SingleProduct from './Screens/SingleProduct'
 import Verify from './Screens/Verify'
+import Profile from './Screens/Profile'
+import Order from './Screens/Order'
+
 
 function App() {
   return (
@@ -30,6 +33,8 @@ function App() {
           <Route path="/resetpassword/:id/:token" element={<ResetPassword/>} />
           <Route  path="/cart" element={<Cart/>} />
           <Route path="/verify/:id/:token" element={<Verify/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/orderlist" element={<Order/>} />
         </Routes>
     </Router>
   );
